@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D _playerRigidbody;
     private SpriteRenderer _spriteRenderer;
+    private Animator _animator;
     private Player _player;
 
     private bool isInAir = false;
@@ -17,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _playerRigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         _player = GetComponent<Player>();
     }
 
