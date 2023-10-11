@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Player))]
+
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speed = 5f;
@@ -12,7 +13,10 @@ public class PlayerMovement : MonoBehaviour
     private Animator _animator;
     private Player _player;
 
-    private bool isInAir = false;
+    private float _horizontalInput;
+    private bool _isInAir = false;
+    private static readonly int IsRunning = Animator.StringToHash("IsRunning");
+    private static readonly int IsOnGround = Animator.StringToHash("IsOnGround");
 
     private void Start()
     {
@@ -24,33 +28,49 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKey)
-            Move();
+        _horizontalInput = Input.GetAxis("Horizontal");
 
-        if (Input.GetKey(KeyCode.Space) && isInAir == false)
+        if (_horizontalInput != 0)
+        {
+            _animator.SetBool(IsRunning, true);
+            Move();
+        }
+        else
+        {
+            _animator.SetBool(IsRunning, false);
+        }
+
+        if (Input.GetKey(KeyCode.Space) && _isInAir == false)
+        {
+            _animator.SetTrigger("Jump");
             Jump();
+        }
 
         if (_player.IsOnGround)
-            isInAir = false;
+        {
+            _animator.SetBool(IsOnGround, true);
+            _isInAir = false;
+        }
     }
 
     private void Move()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (_horizontalInput < 0)
         {
             _spriteRenderer.flipX = true;
-            transform.Translate(Vector2.left * (_speed * Time.deltaTime));
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (_horizontalInput >= 0)
         {
             _spriteRenderer.flipX = false;
-            transform.Translate(Vector2.right * (_speed * Time.deltaTime));
         }
+
+        transform.Translate(Vector2.right * (_horizontalInput * _speed * Time.deltaTime));
     }
 
     private void Jump()
     {
-        isInAir = true;
+        _isInAir = true;
+        _animator.SetBool(IsOnGround, false);
         _playerRigidbody.AddForce(Vector2.up * (_jumpForce * Time.deltaTime), ForceMode2D.Impulse);
     }
 }

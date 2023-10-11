@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground" && transform.position.y > collision.transform.position.y)
             _isOnGround = true;
+        else 
+            _isOnGround = false;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
