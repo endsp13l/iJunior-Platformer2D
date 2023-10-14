@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         _player = GetComponent<Player>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         _horizontalInput = Input.GetAxis("Horizontal");
 
@@ -71,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _isInAir = true;
         _animator.SetBool(IsOnGround, false);
-        _playerRigidbody.velocity = Vector2.up * _jumpForce;
+        _playerRigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+        //_playerRigidbody.velocity = Vector2.up * _jumpForce;
     }
 }
