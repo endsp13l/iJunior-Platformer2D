@@ -1790,6 +1790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 819886598}
   _offset: {x: 0.5, y: 0, z: -10}
+  _speed: 2
   _leftLimit: -1
   _rightLimit: 19
   _topLimit: 4.5
@@ -2385,7 +2386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _jumpForce: 5
+  _jumpForce: 11
 --- !u!114 &819886597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6285,15 +6286,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8640835190634783542, guid: eb706bbef38a24b449dd903cd68143e7, type: 3}
       propertyPath: m_Mass
-      value: 1.1826
+      value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8640835190634783542, guid: eb706bbef38a24b449dd903cd68143e7, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8640835190634783542, guid: eb706bbef38a24b449dd903cd68143e7, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 28b25c8eeafd3f44aa4b8a6eefc2fc89, type: 2}
     - target: {fileID: 8640835190634783542, guid: eb706bbef38a24b449dd903cd68143e7, type: 3}
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8640835190634783542, guid: eb706bbef38a24b449dd903cd68143e7, type: 3}
       propertyPath: m_UseAutoMass
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb706bbef38a24b449dd903cd68143e7, type: 3}
