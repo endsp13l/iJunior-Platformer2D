@@ -63,14 +63,14 @@ public class PlayerMovement : MonoBehaviour
         {
             _spriteRenderer.flipX = false;
         }
-
-        transform.Translate(Vector2.right * (_horizontalInput * _speed * Time.deltaTime));
+        
+        _playerRigidbody.velocity = new Vector2(_horizontalInput * _speed, _playerRigidbody.velocity.y);
     }
 
     private void Jump()
     {
         _isInAir = true;
         _animator.SetBool(IsOnGround, false);
-        _playerRigidbody.AddForce(Vector2.up * (_jumpForce * Time.deltaTime), ForceMode2D.Impulse);
+        _playerRigidbody.velocity = Vector2.up * _jumpForce;
     }
 }
