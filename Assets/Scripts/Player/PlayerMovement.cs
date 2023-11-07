@@ -2,6 +2,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Player))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Animator))]
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private bool _isInAir = false;
     private static readonly int IsRunning = Animator.StringToHash("IsRunning");
     private static readonly int IsOnGround = Animator.StringToHash("IsOnGround");
+    private static readonly int Jump1 = Animator.StringToHash("Jump");
 
     private void Start()
     {
@@ -42,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && _isInAir == false)
         {
-            _animator.SetTrigger("Jump");
+            _animator.SetTrigger(Jump1);
             Jump();
         }
 
@@ -63,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _spriteRenderer.flipX = false;
         }
-        
+
         _playerRigidbody.velocity = new Vector2(_horizontalInput * _speed, _playerRigidbody.velocity.y);
     }
 
@@ -72,6 +75,5 @@ public class PlayerMovement : MonoBehaviour
         _isInAir = true;
         _animator.SetBool(IsOnGround, false);
         _playerRigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-        //_playerRigidbody.velocity = Vector2.up * _jumpForce;
     }
 }

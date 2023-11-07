@@ -8,6 +8,7 @@ public class Chest : MonoBehaviour
     [SerializeField] private float _prizeSpawnOffset = 1f;
 
     private bool _isOpened = false;
+    private static readonly int IsOpen = Animator.StringToHash("IsOpen");
 
     private void Start()
     {
@@ -24,7 +25,7 @@ public class Chest : MonoBehaviour
     {
         Vector2 prizePosition = new Vector2(transform.position.x, transform.position.y + _prizeSpawnOffset);
 
-        _animator.SetBool("IsOpen", true);
+        _animator.SetBool(IsOpen, true);
         Instantiate(_prize, prizePosition, Quaternion.identity);
         _isOpened = true;
     }
