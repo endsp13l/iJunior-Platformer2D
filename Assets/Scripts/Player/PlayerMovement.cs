@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private static readonly int IsOnGround = Animator.StringToHash("IsOnGround");
     private static readonly int Jump1 = Animator.StringToHash("Jump");
 
-    private void Start()
+    private void Awake()
     {
         _playerRigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();

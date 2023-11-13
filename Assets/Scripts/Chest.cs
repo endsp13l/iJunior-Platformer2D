@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
+
 public class Chest : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
@@ -10,7 +11,7 @@ public class Chest : MonoBehaviour
     private bool _isOpened = false;
     private static readonly int IsOpen = Animator.StringToHash("IsOpen");
 
-    private void Start()
+    private void Awake()
     {
         _animator = GetComponent<Animator>();
     }
