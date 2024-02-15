@@ -3,7 +3,7 @@ using UnityEngine;
 public class Patroling : MonoBehaviour
 {
     [SerializeField] private Transform _path;
-    [SerializeField] private float _speed = 5f;
+    [SerializeField] private float _speed = 2f;
 
     private Transform[] _wayPoints;
     private int _currentWayPointIndex = 0;
@@ -16,7 +16,7 @@ public class Patroling : MonoBehaviour
         {
             _wayPoints[i] = _path.GetChild(i);
         }
-        
+
         transform.position = _wayPoints[_currentWayPointIndex].position;
     }
 

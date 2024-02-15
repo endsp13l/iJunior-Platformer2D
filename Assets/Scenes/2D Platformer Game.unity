@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 48147384}
   - component: {fileID: 48147385}
   - component: {fileID: 48147386}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -662,7 +662,7 @@ GameObject:
   - component: {fileID: 117155939}
   - component: {fileID: 117155940}
   - component: {fileID: 117155941}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: column_up (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 163477489}
   - component: {fileID: 163477490}
   - component: {fileID: 163477491}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (12)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1068,7 +1068,7 @@ GameObject:
   - component: {fileID: 218636120}
   - component: {fileID: 218636121}
   - component: {fileID: 218636122}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (4)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1879,7 +1879,7 @@ GameObject:
   - component: {fileID: 580688693}
   - component: {fileID: 580688694}
   - component: {fileID: 580688695}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (15)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2086,6 +2086,10 @@ PrefabInstance:
       propertyPath: _path
       value: 
       objectReference: {fileID: 868938545}
+    - target: {fileID: 4810863648836682002, guid: 526e2b8f6e0c5cb42af6cca2ecf57561, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4810863648836682004, guid: 526e2b8f6e0c5cb42af6cca2ecf57561, type: 3}
       propertyPath: m_Name
       value: Mace2
@@ -2179,7 +2183,7 @@ GameObject:
   - component: {fileID: 725028955}
   - component: {fileID: 725028956}
   - component: {fileID: 725028957}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (10)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2334,7 +2338,7 @@ GameObject:
   - component: {fileID: 789295618}
   - component: {fileID: 789295619}
   - component: {fileID: 789295620}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (13)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2493,7 +2497,7 @@ GameObject:
   - component: {fileID: 823801172}
   - component: {fileID: 823801173}
   - component: {fileID: 823801174}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: column_up (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2602,7 +2606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 829000423}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2938,7 +2942,7 @@ GameObject:
   - component: {fileID: 918227216}
   - component: {fileID: 918227217}
   - component: {fileID: 918227218}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (6)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3198,7 +3202,7 @@ GameObject:
   - component: {fileID: 993163008}
   - component: {fileID: 993163009}
   - component: {fileID: 993163010}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: column_up (3)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3488,7 +3492,7 @@ GameObject:
   - component: {fileID: 1157948659}
   - component: {fileID: 1157948660}
   - component: {fileID: 1157948661}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (9)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3612,7 +3616,7 @@ GameObject:
   - component: {fileID: 1169181215}
   - component: {fileID: 1169181216}
   - component: {fileID: 1169181217}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (8)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3724,6 +3728,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c498913e3285b814390e3929253d088d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1225770464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4810863648836682004, guid: 526e2b8f6e0c5cb42af6cca2ecf57561, type: 3}
+  m_PrefabInstance: {fileID: 705087560}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1225770467
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225770464}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.28, y: 1.28}
+  m_EdgeRadius: 0
 --- !u!1 &1237334405
 GameObject:
   m_ObjectHideFlags: 0
@@ -3820,7 +3855,7 @@ GameObject:
   - component: {fileID: 1240338105}
   - component: {fileID: 1240338106}
   - component: {fileID: 1240338107}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (14)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3943,7 +3978,7 @@ GameObject:
   - component: {fileID: 1266193470}
   - component: {fileID: 1266193471}
   - component: {fileID: 1266193472}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: column_up
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4245,7 +4280,7 @@ GameObject:
   - component: {fileID: 1337798890}
   - component: {fileID: 1337798891}
   - component: {fileID: 1337798892}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (11)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4260,7 +4295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1337798888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.86, y: 0.29, z: 0}
+  m_LocalPosition: {x: 9.94, y: 0.29, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4828,7 +4863,7 @@ GameObject:
   - component: {fileID: 1452683052}
   - component: {fileID: 1452683053}
   - component: {fileID: 1452683054}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (7)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -5121,6 +5156,10 @@ PrefabInstance:
       propertyPath: _path
       value: 
       objectReference: {fileID: 152505363}
+    - target: {fileID: 4810863648836682002, guid: 526e2b8f6e0c5cb42af6cca2ecf57561, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4810863648836682004, guid: 526e2b8f6e0c5cb42af6cca2ecf57561, type: 3}
       propertyPath: m_Name
       value: Mace3
@@ -5176,6 +5215,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4810863648836682005, guid: 526e2b8f6e0c5cb42af6cca2ecf57561, type: 3}
   m_PrefabInstance: {fileID: 1563590958}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1565104703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4810863648836682004, guid: 526e2b8f6e0c5cb42af6cca2ecf57561, type: 3}
+  m_PrefabInstance: {fileID: 1563590958}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &1565104706
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565104703}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.28, y: 1.28}
+  m_EdgeRadius: 0
 --- !u!1 &1567104365
 GameObject:
   m_ObjectHideFlags: 0
@@ -5335,6 +5405,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1723384356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1723384357}
+  m_Layer: 0
+  m_Name: GroundCheckPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1723384357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723384356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.36, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 819886598}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1742974834
 GameObject:
   m_ObjectHideFlags: 0
@@ -5453,7 +5554,7 @@ GameObject:
   - component: {fileID: 1824731548}
   - component: {fileID: 1824731549}
   - component: {fileID: 1824731550}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (2)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -5577,7 +5678,7 @@ GameObject:
   - component: {fileID: 1834487557}
   - component: {fileID: 1834487558}
   - component: {fileID: 1834487559}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grass (5)
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -6271,6 +6372,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grass (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3619385332892262555, guid: 3028f1ebc8a0a4b45aaa2f34a2f7c72f, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3028f1ebc8a0a4b45aaa2f34a2f7c72f, type: 3}
 --- !u!1001 &4810863647221965918
@@ -6284,10 +6389,6 @@ PrefabInstance:
       propertyPath: _path
       value: 
       objectReference: {fileID: 522656953}
-    - target: {fileID: 1614898510, guid: 526e2b8f6e0c5cb42af6cca2ecf57561, type: 3}
-      propertyPath: _speed
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 4810863648836682004, guid: 526e2b8f6e0c5cb42af6cca2ecf57561, type: 3}
       propertyPath: m_Name
       value: Mace1

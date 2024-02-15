@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private const string Horizontal = nameof(Horizontal);
+    
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _jumpForce = 100;
 
@@ -31,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _horizontalInput = Input.GetAxis("Horizontal");
+        _horizontalInput = Input.GetAxis(Horizontal);
 
         if (_horizontalInput != 0)
         {

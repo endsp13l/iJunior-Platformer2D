@@ -18,7 +18,7 @@ public class Chest : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.TryGetComponent<Player>(out Player player) && _isOpened == false)
+        if (other.GetComponent<Player>() && _isOpened == false)
             Open();
     }
 
