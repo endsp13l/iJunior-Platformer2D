@@ -6,17 +6,28 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Patroling _patroling;
     [SerializeField] private ObservationArea _observationArea;
 
-    private void Update()
+    private void OnEnable()
     {
-        if (_observationArea.IsPlayerDetected)
-        {
-            _pursuit.enabled = true;
-            _patroling.enabled = false;
-        }
-        else
-        {
-            _pursuit.enabled = false;
-            _patroling.enabled = true;
-        }
+        _observationArea.PlayerDetected += Pursue;
+        _observationArea.PlayerLost += Patrol;
+    }
+
+    private void OnDisable()
+    {
+        _observationArea.PlayerDetected -= Pursue;
+        _observationArea.PlayerLost -= Patrol;
+    }
+
+    private void Pursue()
+    {
+        _patroling.enabled = false;
+        _pursuit.enabled = true;
+        _pursuit.SetTarget(_observationArea.PlayerTransform);
+    }
+
+    private void Patrol()
+    {
+        _pursuit.enabled = false;
+        _patroling.enabled = true;
     }
 }

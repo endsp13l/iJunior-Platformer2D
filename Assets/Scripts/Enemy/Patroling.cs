@@ -13,9 +13,7 @@ public class Patroling : MonoBehaviour
         _wayPoints = new Transform[_path.childCount];
 
         for (int i = 0; i < _path.childCount; i++)
-        {
             _wayPoints[i] = _path.GetChild(i);
-        }
 
         transform.position = _wayPoints[_currentWayPointIndex].position;
     }
