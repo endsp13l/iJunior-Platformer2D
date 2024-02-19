@@ -75,7 +75,9 @@ GameObject:
   - component: {fileID: 1614898510}
   - component: {fileID: 1614898511}
   - component: {fileID: 1614898512}
-  m_Layer: 0
+  - component: {fileID: -1141233542670729562}
+  - component: {fileID: 570861456517568034}
+  m_Layer: 6
   m_Name: EnemyMace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +92,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4810863648836682004}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.34, y: 0.067867875, z: 9.884049}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -215,6 +217,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6aa84a31e646f4eb37f373092b4b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 100
+  _damage: 15
+--- !u!114 &-1141233542670729562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810863648836682004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372aa3dd8d53f444daf8dad38a6fc544, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _pursuit: {fileID: 1614898511}
   _patroling: {fileID: 1614898510}
   _observationArea: {fileID: 6198115994903409538}
+--- !u!114 &570861456517568034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4810863648836682004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e9b33889baa2c40ac5537bb3517640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

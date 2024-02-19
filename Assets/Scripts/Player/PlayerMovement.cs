@@ -1,7 +1,6 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(Player))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 
@@ -15,20 +14,24 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _playerRigidbody;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
-    private Player _player;
 
+    private Vector2 _direction;
     private float _horizontalInput;
+    
     private bool _isInAir = false;
+    private bool _isOnGround = false;
+    
     private static readonly int IsRunning = Animator.StringToHash("IsRunning");
     private static readonly int IsOnGround = Animator.StringToHash("IsOnGround");
     private static readonly int Jump1 = Animator.StringToHash("Jump");
+    
+    public Vector3 Direction => _direction;
 
     private void Awake()
     {
         _playerRigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _animator = GetComponent<Animator>();
-        _player = GetComponent<Player>();
     }
 
     private void FixedUpdate()
@@ -51,11 +54,23 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
 
-        if (_player.IsOnGround)
+        if (_isOnGround)
         {
             _animator.SetBool(IsOnGround, true);
             _isInAir = false;
         }
+    }
+    
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Ground>() && transform.position.y > collision.transform.position.y)
+            _isOnGround = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Ground>())
+            _isOnGround = false;
     }
 
     private void Move()
@@ -63,10 +78,12 @@ public class PlayerMovement : MonoBehaviour
         if (_horizontalInput < 0)
         {
             _spriteRenderer.flipX = true;
+            _direction = Vector2.left;
         }
         else if (_horizontalInput >= 0)
         {
             _spriteRenderer.flipX = false;
+            _direction = Vector2.right;
         }
 
         _playerRigidbody.velocity = new Vector2(_horizontalInput * _speed, _playerRigidbody.velocity.y);
