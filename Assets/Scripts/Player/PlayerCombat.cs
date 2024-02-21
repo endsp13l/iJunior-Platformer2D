@@ -41,6 +41,16 @@ public class PlayerCombat : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.TryGetComponent(out AidKit aidKit))
+        {
+            _currentHealth += aidKit.Collect();
+            if (_currentHealth > _maxHealth)
+                _currentHealth = _maxHealth;
+        }
+    }
+
     private void Attack()
     {
         Vector2 direction = _playerMovement.Direction;
@@ -52,16 +62,5 @@ public class PlayerCombat : MonoBehaviour
         {
             enemy.TakeDamage(_damage);
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Vector3 startPosition = transform.position;
-        
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(startPosition, _attackDistance);
-
-        Gizmos.color = Color.green;
-        Gizmos.DrawRay(startPosition, _playerMovement.Direction);
     }
 }
