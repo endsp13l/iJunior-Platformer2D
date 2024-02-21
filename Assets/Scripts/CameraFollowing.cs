@@ -13,7 +13,8 @@ public class CameraFollowing : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (_target)
+            Move();
     }
 
     private void Move()

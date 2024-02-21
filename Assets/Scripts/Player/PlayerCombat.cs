@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerCombat : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _attackDistance = 2f;
 
     [SerializeField] private LayerMask _enemyLayer;
+    [SerializeField] private Text _healthText;
 
     private PlayerMovement _playerMovement;
 
@@ -29,6 +31,8 @@ public class PlayerCombat : MonoBehaviour
 
     private void Update()
     {
+        _healthText.text = "Health: " + _currentHealth;
+        
         if (_isAlive && Input.GetMouseButtonDown(0))
             Attack();
     }

@@ -3,11 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
-
 public class PlayerMovement : MonoBehaviour
 {
     private const string Horizontal = nameof(Horizontal);
-    
+
     [SerializeField] private float _speed = 5f;
     [SerializeField] private float _jumpForce = 100;
 
@@ -17,14 +16,14 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 _direction;
     private float _horizontalInput;
-    
+
     private bool _isInAir = false;
     private bool _isOnGround = false;
-    
+
     private static readonly int IsRunning = Animator.StringToHash("IsRunning");
     private static readonly int IsOnGround = Animator.StringToHash("IsOnGround");
     private static readonly int Jump1 = Animator.StringToHash("Jump");
-    
+
     public Vector3 Direction => _direction;
 
     private void Awake()
@@ -60,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
             _isInAir = false;
         }
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<Ground>() && transform.position.y > collision.transform.position.y)
