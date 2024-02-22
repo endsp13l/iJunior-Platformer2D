@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
+
 public class PlayerMovement : MonoBehaviour
 {
     private const string Horizontal = nameof(Horizontal);

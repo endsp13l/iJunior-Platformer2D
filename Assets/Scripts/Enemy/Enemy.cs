@@ -10,18 +10,7 @@ public class Enemy : MonoBehaviour
     private PlayerCombat _player;
     private bool _canAttack = false;
 
-    public void TakeDamage(float damage)
-    {
-        _health -= damage;
-    }
-
-    private void FixedUpdate()
-    {
-        if (_health <= 0)
-            Destroy(gameObject);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+   private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out PlayerCombat player))
         {
@@ -38,6 +27,14 @@ public class Enemy : MonoBehaviour
            _canAttack = false;
             StopCoroutine(Attack());
         }
+    }
+    
+    public void TakeDamage(float damage)
+    {
+        _health -= damage;
+        
+        if (_health <= 0)
+            Destroy(gameObject);
     }
     
     private IEnumerator Attack()

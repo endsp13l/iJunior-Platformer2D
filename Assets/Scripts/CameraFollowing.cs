@@ -17,17 +17,6 @@ public class CameraFollowing : MonoBehaviour
             Move();
     }
 
-    private void Move()
-    {
-        Vector3 nextPosition =
-            Vector3.Lerp(transform.position, _target.position + _offset, _speed * Time.fixedDeltaTime);
-        transform.position = nextPosition;
-
-        Vector3 currentPosition = transform.position;
-        transform.position = new Vector3(Mathf.Clamp(currentPosition.x, _leftLimit, _rightLimit),
-            Mathf.Clamp(currentPosition.y, _bottomLimit, _topLimit), currentPosition.z);
-    }
-
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -37,5 +26,16 @@ public class CameraFollowing : MonoBehaviour
 
         Gizmos.DrawLine(new Vector3(_leftLimit, _topLimit, 0), new Vector3(_rightLimit, _topLimit, 0));
         Gizmos.DrawLine(new Vector3(_rightLimit, _bottomLimit, 0), new Vector3(_leftLimit, _bottomLimit, 0));
+    }
+    
+    private void Move()
+    {
+        Vector3 nextPosition =
+            Vector3.Lerp(transform.position, _target.position + _offset, _speed * Time.fixedDeltaTime);
+        transform.position = nextPosition;
+
+        Vector3 currentPosition = transform.position;
+        transform.position = new Vector3(Mathf.Clamp(currentPosition.x, _leftLimit, _rightLimit),
+            Mathf.Clamp(currentPosition.y, _bottomLimit, _topLimit), currentPosition.z);
     }
 }

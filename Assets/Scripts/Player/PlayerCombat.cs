@@ -4,11 +4,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerCombat : MonoBehaviour
 {
-    [Header("Health")] 
-    [SerializeField] private float _currentHealth = 100f;
+    [Header("Health")] [SerializeField] private float _currentHealth = 100f;
     [SerializeField] private float _maxHealth = 100f;
-    [Header("Attack")] 
-    [SerializeField] private float _damage = 20f;
+    [Header("Attack")] [SerializeField] private float _damage = 20f;
     [SerializeField] private float _attackDistance = 2f;
 
     [SerializeField] private LayerMask _enemyLayer;
@@ -17,11 +15,6 @@ public class PlayerCombat : MonoBehaviour
     private PlayerMovement _playerMovement;
 
     private bool _isAlive => _currentHealth > 0;
-
-    public void TakeDamage(float damage)
-    {
-        _currentHealth -= damage;
-    }
 
     private void Awake()
     {
@@ -32,17 +25,9 @@ public class PlayerCombat : MonoBehaviour
     private void Update()
     {
         _healthText.text = "Health: " + _currentHealth;
-        
+
         if (_isAlive && Input.GetMouseButtonDown(0))
             Attack();
-    }
-
-    private void FixedUpdate()
-    {
-        if (_isAlive)
-            return;
-
-        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -52,6 +37,17 @@ public class PlayerCombat : MonoBehaviour
             _currentHealth += aidKit.Collect();
             if (_currentHealth > _maxHealth)
                 _currentHealth = _maxHealth;
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _currentHealth -= damage;
+        
+        if (_currentHealth < 0)
+        {
+            _currentHealth = 0;
+            Destroy(gameObject); 
         }
     }
 
