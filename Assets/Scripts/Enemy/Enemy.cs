@@ -1,50 +1,28 @@
-using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _health = 100f;
-    [SerializeField] private float _damage = 15f;
-    [SerializeField] private float _nextAttakTime = 2f;
+    private Health _health;
 
-    private PlayerCombat _player;
-    private bool _canAttack = false;
-
-   private void OnCollisionEnter2D(Collision2D collision)
+    private void Awake()
     {
-        if (collision.gameObject.TryGetComponent(out PlayerCombat player))
-        {
-            _player = player;
-            _canAttack = true;
-            StartCoroutine(Attack());
-        }
+        _health = GetComponent<Health>();
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnEnable()
     {
-        if (collision.gameObject.GetComponent<PlayerCombat>())
-        {
-           _canAttack = false;
-            StopCoroutine(Attack());
-        }
+        _health.HealthChanged += OnHealthChanged;
     }
-    
-    public void TakeDamage(float damage)
+
+    private void OnDisable()
     {
-        _health -= damage;
-        
-        if (_health <= 0)
+        _health.HealthChanged -= OnHealthChanged;
+    }
+
+    private void OnHealthChanged()
+    {
+        if (_health.IsAlive == false)
             Destroy(gameObject);
-    }
-    
-    private IEnumerator Attack()
-    {
-        WaitForSeconds wait = new WaitForSeconds(_nextAttakTime);
-
-        while (_canAttack)
-        {
-            _player.TakeDamage(_damage);
-            yield return wait;
-        }
     }
 }

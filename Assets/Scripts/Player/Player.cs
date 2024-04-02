@@ -1,14 +1,29 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
 public class Player : MonoBehaviour
 {
-    private int _coins = 0;
+    private float _destroyDelay = 0.1f;
+    private Health _health;
 
-    public int Coins => _coins;
-
-    private void OnTriggerEnter2D(Collider2D other)
+    private void Awake()
     {
-        if (other.TryGetComponent(out Coin coin))
-            _coins += coin.Collect();
+        _health = GetComponent<Health>();
+    }
+
+    private void OnEnable()
+    {
+        _health.HealthChanged += OnHealthChanged;
+    }
+    
+    private void OnDisable()
+    {
+        _health.HealthChanged -= OnHealthChanged;
+    }
+
+    private void OnHealthChanged()
+    {
+        if (_health.IsAlive == false)
+            Destroy(gameObject, _destroyDelay);
     }
 }
