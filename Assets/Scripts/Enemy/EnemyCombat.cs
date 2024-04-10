@@ -8,28 +8,31 @@ public class EnemyCombat : MonoBehaviour
 
     private bool _canAttack = false;
     private Health _playerHealth;
+    private Coroutine _coroutine;
 
-   private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject target = collision.gameObject;
-        
-        if (target.GetComponent<Player>() && target.TryGetComponent<Health>(out Health health))
+
+        if (target.TryGetComponent(out Player player) && target.TryGetComponent(out Health health))
         {
             _playerHealth = health;
             _canAttack = true;
-            StartCoroutine(Attack());
+            _coroutine = StartCoroutine(Attack());
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerCombat>())
+        if (collision.gameObject.GetComponent<Player>())
         {
-           _canAttack = false;
-            StopCoroutine(Attack());
+            _canAttack = false;
+
+            if (_coroutine != null)
+                StopCoroutine(_coroutine);
         }
     }
-    
+
     private IEnumerator Attack()
     {
         WaitForSeconds wait = new WaitForSeconds(_nextAttakTime);

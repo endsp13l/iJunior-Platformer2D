@@ -8,6 +8,7 @@ public class SmoothHealthBar : HealthIndicator
     [SerializeField] private float _valueChangeSpeed = 0.3f;
 
     private Slider _healthBar;
+    private Coroutine _coroutine;
 
     private void Awake()
     {
@@ -18,8 +19,10 @@ public class SmoothHealthBar : HealthIndicator
     {
         float value = _health.CurrentHealth / _health.MaxHealth;
 
-        StartCoroutine(SmoothChangeValue(value));
-        StopCoroutine(SmoothChangeValue(value));
+        _coroutine = StartCoroutine(SmoothChangeValue(value));
+       
+        if (_coroutine != null && _healthBar.value == value) 
+            StopCoroutine(_coroutine);
     }
 
     private IEnumerator SmoothChangeValue(float value)

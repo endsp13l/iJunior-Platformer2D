@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement))]
@@ -8,34 +9,35 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private LayerMask _enemyLayer;
 
     private PlayerMovement _playerMovement;
-    private Health _health;
+
+    public event Action<Vector3> Hit;
 
     private void Awake()
     {
         _playerMovement = GetComponent<PlayerMovement>();
-        _health = GetComponent<Health>();
     }
 
     private void Update()
     {
-        if (_health.IsAlive && Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
             Attack();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.TryGetComponent(out AidKit aidKit))
-            _health.Heal(aidKit.Collect());
-    }
-
-   private void Attack()
+    private void Attack()
     {
         Vector2 direction = _playerMovement.Direction;
         Ray2D forwardRay = new Ray2D(transform.position, direction);
 
         RaycastHit2D hit = Physics2D.Raycast(forwardRay.origin, direction, _attackDistance, _enemyLayer);
+        Collider2D target = hit.collider;
 
-        if (hit.collider.TryGetComponent(out Health targetHealth))
-            targetHealth.TakeDamage(_damage);
+        if (target)
+        {
+            if (target.TryGetComponent(out Health targetHealth))
+            {
+                targetHealth.TakeDamage(_damage);
+                Hit?.Invoke(hit.transform.position);
+            }
+        }
     }
 }

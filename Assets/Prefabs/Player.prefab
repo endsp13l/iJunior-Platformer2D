@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 819886596}
   - component: {fileID: -4674860998911895218}
   - component: {fileID: 819886597}
+  - component: {fileID: -7382633627650285451}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -247,7 +248,7 @@ MonoBehaviour:
   _attackDistance: 2
   _enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
 --- !u!114 &819886597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +259,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 901c448b0c90a96458a53057327bd593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7382633627650285451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8640835190634782922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e29ec43619f5f34b8ca7eb3e2d74b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &8640835191193309956
