@@ -24,7 +24,7 @@ public class EnemyCombat : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Player>())
+        if (collision.gameObject.TryGetComponent(out Player player))
         {
             _canAttack = false;
 

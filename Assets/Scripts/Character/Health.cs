@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    private const float _minHealth = 0f;
     private float _maxHealth = 100f;
     private float _currentHealth;
 
@@ -11,7 +12,6 @@ public class Health : MonoBehaviour
 
     public float CurrentHealth => _currentHealth;
     public float MaxHealth => _maxHealth;
-    public bool IsAlive => _currentHealth > 0;
 
     private void Awake()
     {
@@ -24,14 +24,14 @@ public class Health : MonoBehaviour
         if (damage > 0)
         {
             _currentHealth -= damage;
-
-            if (_currentHealth < 0)
-            {
-                _currentHealth = 0;
-                Died?.Invoke();
-            }
+            _currentHealth = ValidateValue(_currentHealth);
 
             HealthChanged?.Invoke();
+
+            if (_currentHealth <= _minHealth)
+            {
+                Died?.Invoke();
+            }
         }
     }
 
@@ -40,13 +40,14 @@ public class Health : MonoBehaviour
         if (value > 0)
         {
             _currentHealth += value;
-
-            if (_currentHealth > _maxHealth)
-            {
-                _currentHealth = _maxHealth;
-            }
+            _currentHealth = ValidateValue(_currentHealth);
 
             HealthChanged?.Invoke();
         }
+    }
+
+    private float ValidateValue(float value)
+    {
+        return Math.Clamp(value, _minHealth, _maxHealth);
     }
 }
