@@ -33,7 +33,7 @@ public class ObservationArea : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.GetComponent<Player>())
+        if (other.TryGetComponent(out Player player))
             _playerLost?.Invoke();
     }
 }

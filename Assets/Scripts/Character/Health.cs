@@ -24,7 +24,7 @@ public class Health : MonoBehaviour
         if (damage > 0)
         {
             _currentHealth -= damage;
-            _currentHealth = ValidateValue(_currentHealth);
+            _currentHealth = Math.Clamp(_currentHealth - damage, _minHealth, _maxHealth); 
 
             HealthChanged?.Invoke();
 
@@ -39,15 +39,9 @@ public class Health : MonoBehaviour
     {
         if (value > 0)
         {
-            _currentHealth += value;
-            _currentHealth = ValidateValue(_currentHealth);
-
+            _currentHealth = Math.Clamp(_currentHealth + value, _minHealth, _maxHealth); 
+            
             HealthChanged?.Invoke();
         }
-    }
-
-    private float ValidateValue(float value)
-    {
-        return Math.Clamp(value, _minHealth, _maxHealth);
     }
 }
