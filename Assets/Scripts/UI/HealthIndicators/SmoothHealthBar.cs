@@ -9,7 +9,7 @@ public class SmoothHealthBar : HealthIndicator
 
     private Slider _healthBar;
     private Coroutine _coroutine;
-
+  
     private void Awake()
     {
         _healthBar = GetComponent<Slider>();
@@ -19,6 +19,9 @@ public class SmoothHealthBar : HealthIndicator
     {
         float value = _health.CurrentHealth / _health.MaxHealth;
 
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+        
         _coroutine = StartCoroutine(SmoothChangeValue(value));
        
         if (_coroutine != null && _healthBar.value == value) 
