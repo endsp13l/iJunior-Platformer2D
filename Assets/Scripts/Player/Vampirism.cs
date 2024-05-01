@@ -1,40 +1,53 @@
+using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D))]
 public class Vampirism : MonoBehaviour
 {
-    [SerializeField] private float _vampiricDamagePerSecond = 15f;
+    private const string EnemyLayer = nameof(Enemy);
+
+    [SerializeField] private float _vampiricDamage = 15f;
+    [SerializeField] private float _drainHealthPeriod = 1f;
+    [SerializeField] private float _vampirismRadius = 2f;
 
     private Health _ownerHealth;
-    private Health _targetHealth;
+    private Collider2D _target;
+    private Coroutine _coroutine;
 
     private void Awake()
     {
         _ownerHealth = GetComponentInParent<Health>();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (_targetHealth)
-            DrainHealth();
+        _coroutine = StartCoroutine(SetTarget());
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnDisable()
     {
-        if (other.TryGetComponent(out Enemy enemy))
-            if (_targetHealth == null)
-                _targetHealth = enemy.GetComponent<Health>();
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    private IEnumerator SetTarget()
     {
-        if (other.TryGetComponent(out Enemy enemy))
-            _targetHealth = null;
+        WaitForSeconds wait = new WaitForSeconds(_drainHealthPeriod);
+
+        yield return wait;
+        _target = Physics2D.OverlapCircle(transform.position, _vampirismRadius, LayerMask.GetMask(EnemyLayer));
+
+        if (_target)
+            DrainHealth(_target);
     }
 
-    private void DrainHealth()
+    private void DrainHealth(Collider2D target)
     {
-        _targetHealth.TakeDamage(_vampiricDamagePerSecond * Time.deltaTime);
-        _ownerHealth.Heal(_vampiricDamagePerSecond * Time.deltaTime);
+        target.TryGetComponent(out Health targetHealth);
+
+        if (targetHealth)
+        {
+            targetHealth.TakeDamage(_vampiricDamage);
+            _ownerHealth.Heal(_vampiricDamage);
+        }
     }
 }
